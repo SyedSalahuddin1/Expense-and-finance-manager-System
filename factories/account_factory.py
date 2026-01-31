@@ -1,11 +1,24 @@
 from domain.savings_account import SavingsAccount
-from domain.credit_account import Credit_Account
+from domain.credit_account import CreditAccount
+
 
 class AccountFactory:
-    def create(self, kind, **kwargs):
-        if kind == "savings":
-            return SavingsAccount(**kwargs)
-        if kind == "credit":
-            return Credit_Account(**kwargs)
-        raise ValueError("Unknown account type")
-    
+    """
+    Factory responsible for creating Account objects.
+    Centralizes knowledge of account types.
+    """
+
+    _ACCOUNT_TYPES = {
+        "savings": SavingsAccount,
+        "credit": CreditAccount,
+    }
+
+    def create(self, kind: str, **kwargs):
+        if kind not in self._ACCOUNT_TYPES:
+            raise ValueError(
+                f"Unsupported account type '{kind}'. "
+                f"Supported types: {list(self._ACCOUNT_TYPES.keys())}"
+            )
+
+        account_class = self._ACCOUNT_TYPES[kind]
+        return account_class(**kwargs)
