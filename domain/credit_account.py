@@ -15,7 +15,7 @@ class CreditAccount(Account):
         credit_limit: float,
     ):
         if credit_limit < 0:
-            raise ValueError("credit_limit must be non-negative")
+            raise ValueError("credit limit must be non-negative")
 
         super().__init__(account_id, owner_name, opening_balance)
         self._credit_limit = credit_limit
@@ -26,7 +26,7 @@ class CreditAccount(Account):
 
         new_amount = self.balance.amount - money.amount
 
-        if new_amount < -self._credit_limit:
+        if new_amount < self._credit_limit:
             raise ValueError("Credit limit exceeded")
 
         new_balance = Money(new_amount, self.balance.currency)

@@ -31,7 +31,7 @@ class TaxedExpenseStrategy(ExpenseStrategy):
 
     def __init__(self, tax_rate: float):
         if tax_rate < 0:
-            raise ValueError("tax_rate must be non-negative")
+            raise ValueError("tax rate must be non-negative")
 
         self._tax_rate = tax_rate
 

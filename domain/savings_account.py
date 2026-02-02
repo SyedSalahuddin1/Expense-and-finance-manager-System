@@ -15,7 +15,7 @@ class SavingsAccount(Account):
         interest_rate: float,
     ):
         if interest_rate < 0:
-            raise ValueError("interest_rate must be non-negative")
+            raise ValueError("interest rate must be non-negative")
 
         super().__init__(account_id, owner_name, opening_balance)
         self._interest_rate = interest_rate

@@ -9,7 +9,7 @@ class Account:
 
     def __init__(self, account_id: int, owner_name: str, opening_balance: Money):
         if not isinstance(opening_balance, Money):
-            raise TypeError("opening_balance must be a Money instance")
+            raise TypeError("opening balance must be a Money instance")
 
         self._id = account_id
         self._owner_name = owner_name
@@ -46,7 +46,7 @@ class Account:
         Single internal authority for changing balance.
         """
         if not isinstance(new_balance, Money):
-            raise TypeError("new_balance must be Money")
+            raise TypeError("new balance must be Money")
 
         self._balance = new_balance
         self._notify(reason)
