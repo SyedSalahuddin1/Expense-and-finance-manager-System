@@ -1,4 +1,4 @@
-<img width="514" height="330" alt="image" src="https://github.com/user-attachments/assets/18cdd2c5-dabe-4455-9ff4-b0e3ccdeb69f" />**Expense & Finance Management API**
+**Expense & Finance Management API**
 
 A backend REST API built with Python and FastAPI to manage accounts and expenses using clean architecture and object-oriented design principles.
 
