@@ -1,96 +1,48 @@
-Expense & Finance Managment System (Python OOP)
-📌Project Overview 
-This project is a production-grade Python application designed to demonstrate Object-Oriented Programming (OOP), Clean Architecture, and SOLID principles through a real-world expense and account management system.
+<img width="514" height="330" alt="image" src="https://github.com/user-attachments/assets/18cdd2c5-dabe-4455-9ff4-b0e3ccdeb69f" />**Expense & Finance Management API**
 
-The system models financial accounts, expenses, and business workflows using encapsulation, inheritance, polymorphism, composition, abstraction, and design patterns.
+A backend REST API built with Python and FastAPI to manage accounts and expenses using clean architecture and object-oriented design principles.
 
-This project is intentionally built phase-by-phase to reflect how real software systems evolve in industry. 
+**Tech Stack**
+- Python 3.13
+- FastAPI
+- Pydantic
+- Pytest
+- Docker
+- Gunicorn + Uvicorn
+- Render (Deployment)
 
-🧠Key Concepts Demonstrated 
-* Object-Oriented Programming (OOP)
-* Clean Architecture
-* Domain-Driven Design (DDD – lightweight)
-* SOLID Principles
-* Dependency Injection
-* Design Patterns (Factory, Strategy, Observer)
-* Repository Pattern
-* Unit Testing with Test Doubles
-* Separation of Concerns
-* Scalable & Maintainable Code Design
+**Key Concepts & Architecture**
+- Object-Oriented Programming (Encapsulation, Inheritance, Polymorphism)
+- SOLID Principles
+- Clean Architecture (Domain, Services, Repositories, API layers)
+- Dependency Injection
+- Request & Response Validation
+- RESTful API Design
 
-🏗️ Architecture Overview
-The project follows Clean Architecture, ensuring that business rules are independent of frameworks and infrastructure.
-domain/         → Core business logic (Entities, Value Objects)
-services/       → Application use-cases
-repositories/   → Data access abstractions & implementations
-strategies/     → Pluggable business rules (Strategy Pattern)
-factories/      → Centralized object creation (Factory Pattern)
-observers/      → Event-driven extensions (Observer Pattern)
-tests/          → Unit tests (Mocks, Fakes)
-main.py         → Composition root / application entry point
+**Features**
+- Create and retrieve accounts (Savings, Credit)
+- Apply expenses to accounts
+- Automatic input validation using Pydantic
+- Proper HTTP error handling
+- In-memory repository pattern
+- Fully tested API endpoints
+- Dockerized for production
+- Deployed as a public API with Swagger docs
 
-🧩 Core Features 
-* Create and manage mulitple account types
-  *Savings Account
-  *Credit Account
-* Enforce business rules using encapsulation
-* Apply expenses using interchangeable strategies
-* Support credit limits and interest calculation
-* Event notifications using observers
-* Easily extensible without modifying existing code
+**Testing**
+- API tests using Pytest and FastAPI TestClient
+- Unit tests for core business logic
 
-  
-🧱 OOP Principles Applied
-* Encapsulation: State mutation is controlled via methods and properties
-* Inheritance: Specialized account types extend a base Account class
-* Polymorphism: Same interface, different behavior (e.g., withdrawal rules)
-* Abstraction: Services and repositories depend on interfaces, not implementations
-* Composition: Objects collaborate instead of relying on deep inheritance
+**Deployment**
+- Containerized using Docker
+- Production server with Gunicorn and Uvicorn workers
+- Deployed on Render
 
-🧠 SOLID Principles Compliance
--> S (SRP): Each class has a single responsibility
--> O (OCP): New features added without modifying existing code
--> L (LSP): Subclasses respect base class contracts
--> I (ISP): Interfaces are minimal and focused
--> D (DIP): High-level modules depend on abstractions
+**Run Locally**
+bash
+uvicorn api.app:app --reload
 
-🧪 Testing Strategy
-* Unit tests for domain logic and services
-* Use of Fake objects and Mocks
-* No dependency on databases or external services
-* Tests validate behavior, not implementation details
-
-  🛠️ Technologies Used
-# Python 3.x
-# Standard Library (abc, unittest)
-# Object-Oriented Design Patterns
-# Clean Architecture principles
-
-🚀 How to Run
-python main.py
-TO Run tests 
-pytest 
-
-
-🎯 Why This Project Matters
-** This project demonstrates:
-** Strong understanding of software design
-** Ability to build scalable systems
-** Clean separation between business logic and infrastructure
-** Industry-relevant OOP and architectural skills
-
-It is Suitable for:
-* Software Engineering Interviews
-* Backend/ Python Developer roles
-* Demonstrating system design thinking
-* Portfolio and resume projects
-
-👨‍💻 Author
-Syed Salahuddin
-Aspiring Software Engineer | Python Developer
-Focused on writing clean, maintainable, and scalable software
-
-
-📄 License
-This project is for educational and portfolio purposes
+**Run Locally**
+docker build -t expense-manager-api .
+docker run -p 8000:8000 expense-manager-api
 
