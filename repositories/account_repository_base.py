@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-
+from typing import List 
+from domain.account import Account
 
 class AccountRepositoryBase(ABC):
     """
@@ -15,7 +16,7 @@ class AccountRepositoryBase(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_by_id(self, account_id):
+    def get_by_id(self, account_id) -> Account:
         """
         Retrieves an account by its identity.
         Raises an error if not found.
@@ -23,7 +24,7 @@ class AccountRepositoryBase(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def list_all(self):
+    def list_all(self) -> List[Account]:
         """
         Returns all stored accounts.
         """

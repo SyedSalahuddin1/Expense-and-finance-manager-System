@@ -1,10 +1,9 @@
-class FakeAccount:
-    def __init__(self):
-        self.withdraw_called = False
-
-    def withdraw(self, money):
-        self.withdraw_called = True
-
+from domain.money import Money
+from domain.expense import Expense
+from domain.account import Account
+from strategies.expense_strategy import NormalExpenseStrategy
+from services.expense_service import ExpenseService
+from repositories.account_repository import AccountRepository
 
 class FakeRepository:
     def __init__(self, account):
@@ -13,19 +12,22 @@ class FakeRepository:
     def get_by_id(self, _):
         return self._account
 
-
 def test_expense_service_applies_expense():
-    from services.expense_service import ExpenseService
-    from domain.expense import Expense
-    from domain.money import Money
-    from strategies.expense_strategy import NormalExpense
+    repo = AccountRepository()
+    account = Account(
+        account_id=1,
+        owner_name="Test User",
+        opening_balance=Money(1000, "USD"),
+    )
+    repo.add(account)
 
-    fake_account = FakeAccount()
-    fake_repo = FakeRepository(fake_account)
+    service = ExpenseService(repo)
 
-    service = ExpenseService(fake_repo)
-    expense = Expense(Money(100, "USD"), NormalExpense())
+    expense = Expense(
+        money=Money(200, "USD"),
+        strategy=NormalExpenseStrategy(),
+    )
 
-    service.apply_expense(1, expense)
+    updated_account = service.apply_expense(1, expense)
 
-    assert fake_account.withdraw_called is True
+    assert updated_account.balance.amount == 800
